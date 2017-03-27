@@ -28,7 +28,7 @@ import java.util.List;
 // Hej
 @Entity
 public class Person {
-
+	//HEJ Svante
   @Id public Long id;
 
   public String firstname;
