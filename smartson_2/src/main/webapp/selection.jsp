@@ -21,7 +21,7 @@
 	%>
 	
 <%--Hardcoded for trial--%>
-<form action="/selection.jsp" method="get">
+<form action="/filter" method="get">
 	Size of output<br>
 	<input type="text" name="output" value="100"/>
 	Gender<br>
