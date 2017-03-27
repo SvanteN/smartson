@@ -1,0 +1,10 @@
+body {
+    font-family: Verdana, Helvetica, sans-serif;
+    background-color: #808080;
+}
+
+#formElement {
+    font-size:16px;
+    margin-top:1px;
+    text-align:center;
+}
