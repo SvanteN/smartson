@@ -28,10 +28,6 @@ public class FilterServlet extends HttpServlet {
 		List<Person> personsFiltered = new ArrayList<Person>();
 		Campaign campaign = (Campaign) session.getAttribute("campaign");
 		
-		boolean a = (boolean) req.getAttribute("loc1");
-		boolean b = (boolean) req.getAttribute("loc2");
-		boolean c = (boolean) req.getAttribute("loc3");
-		
 		//Hardcoded for trial
 		List<String> cities = new ArrayList<String>(Arrays.asList("Stockholm", "Gothenburg", "Malmo"));
 		boolean a = (boolean) req.getAttribute("loc1");
@@ -44,7 +40,7 @@ public class FilterServlet extends HttpServlet {
 			pass = true;
 			if (!(boolean) req.getAttribute("loc4")) {
 				for(int i=0; i<cities.size(); i++) {
-					if (l.get(i) && p.city == cities.get(i)) {
+					if (locs.get(i) && p.city == cities.get(i)) {
 						pass = true;
 						break;
 					} else {
@@ -52,12 +48,16 @@ public class FilterServlet extends HttpServlet {
 					}
 				}
 			}
-			List<Boolean> answers = p.campaignAnswers.get(campaign.id.toString());
-			for (int i=0; i<campaign.questions.size(); i++) {
-				if (answer.get(i) ==)
+			if (pass) {
+				personsFiltered.add(p);
 			}
+			/*List<Boolean> answers = p.campaignAnswers.get(campaign.id.toString());
+			for (Integer i=0; i<campaign.questions.size(); i++) {
+				if (answers.get(i) != (boolean) req.getAttribute("yes" + i.toString()) || answers.get)
+			}*/
 		}
 		
+		System.out.println(personsFiltered);
 		
 		req.setAttribute("personsFiltered", personsFiltered);
 	    

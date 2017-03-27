@@ -21,7 +21,7 @@
 	%>
 	
 <%--Hardcoded for trial--%>
-<form action="/selection.jsp" method="get">
+<form action="/filter" method="get">
 	Size of output<br>
 	<input type="text" name="output" value="100"/>
 	Gender<br>
@@ -42,7 +42,7 @@
 	
 	<%
 	for (int i=0; i<campaign.questions.size(); i++) {
-		%> <%= question.get(i) %><br>
+		%> <%= campaign.questions.get(i) %><br>
 		<label><input type="checkbox" name="yes<%= i%>">Yes</label><br>
 		<label><input type="checkbox" name="no<%= i%>">No</label><br>
 		<%
