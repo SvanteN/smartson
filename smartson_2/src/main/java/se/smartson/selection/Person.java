@@ -8,6 +8,7 @@ import com.googlecode.objectify.annotation.Index;
 import com.googlecode.objectify.annotation.Parent;
 import com.googlecode.objectify.Key;
 
+import java.io.Serializable;
 import java.lang.String;
 import java.util.Date;
 import java.util.List;
@@ -27,40 +28,24 @@ import java.util.List;
 
 // Hej
 @Entity
-public class Person {
-	//HEJ Svante
-  @Id public Long id;
+public class Person implements Serializable{
 
-  public String firstname;
+	private static final long serialVersionUID = 1L;
 
-  public String secondname ;
-
- 
-  public int postnumber;
-
-  public int birthyear;
-
-  @Index public List<Long> campaigns;
-
-
-
-  /**
-   * Takes all important field
-   **/
+	@Id public Long id;
+	public String firstname;
+	public String secondname ;
+	public int postnumber;
+	public int birthyear;
+	@Index public List<Long> campaigns;
   
-  public Person() {
-	  
-  }
-  
-  public Person(String n, String s, int p, int y, List<Long> c){
-    this();
-    firstname = n;
-    secondname = s;
-    postnumber= p;
-    birthyear = y;
-    campaigns = c;
-
-    
-  }
-
+	public Person() {}
+	public Person(String n, String s, int p, int y, List<Long> c){
+	    this();
+	    firstname = n;
+	    secondname = s;
+	    postnumber= p;
+	    birthyear = y;
+	    campaigns = c;
+	}
 }

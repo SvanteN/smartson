@@ -7,6 +7,7 @@ import com.googlecode.objectify.annotation.Index;
 import com.googlecode.objectify.annotation.Parent;
 import com.googlecode.objectify.Key;
 
+import java.io.Serializable;
 import java.lang.String;
 import java.util.Date;
 
@@ -23,26 +24,18 @@ import java.util.Date;
  * Jackson wants us to write a BeanSerializer for cloud endpoints.
  **/
 @Entity
-public class Campaign {
+public class Campaign implements Serializable{
 
-  @Id public Long id;
+	private static final long serialVersionUID = 1L;
 
-  public String name;
+	@Id public Long id;
+	public String name;
 
+	public Campaign(){}
 
-  /**
-   * Takes all important field
-   **/
-
-  public Campaign(){}
-
-  public Campaign(String n, Long i){
-    this();
-    name = n;
-    id = i;
-
-
-    
-  }
-
+	public Campaign(String n, Long i){
+		this();
+		name = n;
+		id = i;
+	}
 }
