@@ -24,6 +24,8 @@ import java.util.List;
  * NOTE - all the properties are PUBLIC to keep this simple; otherwise,
  * Jackson wants us to write a BeanSerializer for cloud endpoints.
  **/
+
+// Hej
 @Entity
 public class Person {
 
