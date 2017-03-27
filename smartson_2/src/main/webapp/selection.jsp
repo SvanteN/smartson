@@ -21,7 +21,7 @@
 	%>
 	
 <%--Hardcoded for trial--%>
-<form action="/filter" method="get">
+<form action="/filter" method="post">
 	Size of output<br>
 	<input type="text" name="output" value="100"/>
 	Gender<br>
@@ -35,10 +35,10 @@
 	<label><input type="checkbox" name="age4">50+</label><br>
 	Location<br>
 	<%--For example big cities in the country --%>
-	<label><input type="checkbox" name="loc1">Stockholm</label>
-	<label><input type="checkbox" name="loc2">Gothenburg</label>
-	<label><input type="checkbox" name="loc3">Malmo</label>
-	<label><input type="checkbox" name="loc4">Sweden</label><br>
+	<label><input type="checkbox" name="loc" value="Stockholm">Stockholm</label>
+	<label><input type="checkbox" name="loc" value="Gothenburg">Gothenburg</label>
+	<label><input type="checkbox" name="loc" value="Malmo">Malmo</label>
+	<label><input type="checkbox" name="loc" value="Sweden">Sweden</label><br>
 	
 	<%
 	for (int i=0; i<campaign.questions.size(); i++) {

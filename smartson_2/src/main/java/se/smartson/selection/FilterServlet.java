@@ -29,23 +29,18 @@ public class FilterServlet extends HttpServlet {
 		Campaign campaign = (Campaign) session.getAttribute("campaign");
 		
 		//Hardcoded for trial
-		List<String> cities = new ArrayList<String>(Arrays.asList("Stockholm", "Gothenburg", "Malmo"));
-		boolean a = (boolean) req.getAttribute("loc1");
-		boolean b = (boolean) req.getAttribute("loc2");
-		boolean c = (boolean) req.getAttribute("loc3");
-		List<Boolean> locs = new ArrayList<Boolean>(Arrays.asList(a, b, c));
+		String[] cities = new String[]{"Stockholm", "Gothenburg", "Malmo"};
+		String[] locs = req.getParameterValues("loc");
 		
 		boolean pass;
 		for (Person p:persons) {
 			pass = true;
-			if (!(boolean) req.getAttribute("loc4")) {
-				for(int i=0; i<cities.size(); i++) {
-					if (locs.get(i) && p.city == cities.get(i)) {
-						pass = true;
-						break;
-					} else {
-						pass = false;
-					}
+			for(String l:locs) {
+				if (p.city.equals(l)) {
+					pass = true;
+					break;
+				} else {
+					pass = false;
 				}
 			}
 			if (pass) {
