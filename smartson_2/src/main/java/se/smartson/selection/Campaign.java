@@ -10,6 +10,7 @@ import com.googlecode.objectify.Key;
 import java.io.Serializable;
 import java.lang.String;
 import java.util.Date;
+import java.util.List;
 
 /**
  * The @Entity tells Objectify about our entity.  We also register it in OfyHelper.java -- very
@@ -30,12 +31,16 @@ public class Campaign implements Serializable{
 
 	@Id public Long id;
 	public String name;
+	public String desc ;
+	public List<String> questions;
 
 	public Campaign(){}
 
-	public Campaign(String n, Long i){
+	public Campaign(String n, Long i, String d, List<String> q){
 		this();
 		name = n;
 		id = i;
+		desc = d;
+		questions = q;
 	}
 }

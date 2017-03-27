@@ -11,7 +11,9 @@ import com.googlecode.objectify.Key;
 import java.io.Serializable;
 import java.lang.String;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The @Entity tells Objectify about our entity.  We also register it in OfyHelper.java -- very
@@ -36,16 +38,29 @@ public class Person implements Serializable{
 	public String firstname;
 	public String secondname ;
 	public int postnumber;
+	public String city;
+	public String adress;
 	public int birthyear;
+	public String email;
+	boolean gender; //male = true, women = false
+	Map<String, List<Boolean>> campaignAnswers;
 	@Index public List<Long> campaigns;
   
 	public Person() {}
-	public Person(String n, String s, int p, int y, List<Long> c){
+	public Person(String n, String s, int p, int y, String e, String ci, String a, boolean g, List<Long> c, Map<String, List<Boolean>> cA){
 	    this();
 	    firstname = n;
 	    secondname = s;
 	    postnumber= p;
+	    city = ci;
 	    birthyear = y;
 	    campaigns = c;
+	    email = e;
+	    gender = g;
+	    campaignAnswers = cA;
+	    adress = a;
+	    
+	    
+	    
 	}
 }
