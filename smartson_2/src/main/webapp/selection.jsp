@@ -3,6 +3,7 @@
 <%@ page import="com.googlecode.objectify.Key" %>
 <%@ page import="com.googlecode.objectify.ObjectifyService" %>
 <%@ page import="se.smartson.selection.Person" %>
+<%@ page import="se.smartson.selection.Campaign" %>
 <%@ page import="java.util.List" %>
 
 <%-- HTML --%>
@@ -14,24 +15,40 @@
 <body>
 
 <%
-	//Hardcoded for trial
-	String[][] filters = new String[3][2];
-	filters[0][0] = "Male";
-	filters[0][1] = "Female";
-	filters[1][0] = "City";
-	filters[1][1] = "Countryside";
-	filters[2][0] = "Age";
-	pageContext.setAttribute("filters", filters);
+	//TODO Handle error if no campaign is assigned 
+	Campaign campaign = (Campaign) session.getAttribute("campaign");
+
 	%>
 	
 <%--Hardcoded for trial--%>
 <form action="/selection.jsp" method="get">
-	<%= filters[0][0]%> - <%= filters[0][1]%><br>
+	Size of output<br>
+	<input type="text" name="output" value="100"/>
+	Gender<br>
+	Female --- Male<br>
 	<input type="range" name="gender" min="0" max="100" value="50"/><br>
-	<%= filters[1][0]%> - <%= filters[1][1]%><br>
-	<input type="range" name="living" min="0" max="100" value="50"/><br>
-	<%= filters[2][0]%><br>
-	<input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><br>
+	Age<br>
+	<%--For example age1 is 18-29 --%>
+	<label><input type="checkbox" name="age1">18-29</label>
+	<label><input type="checkbox" name="age2">30-39</label>
+	<label><input type="checkbox" name="age3">40-49</label>
+	<label><input type="checkbox" name="age4">50+</label><br>
+	Location<br>
+	<%--For example big cities in the country --%>
+	<label><input type="checkbox" name="loc1">Stockholm</label>
+	<label><input type="checkbox" name="loc2">Gothenburg</label>
+	<label><input type="checkbox" name="loc3">Malmo</label>
+	<label><input type="checkbox" name="loc4">Sweden</label><br>
+	
+	<%
+	for (int i=0; i<campaign.questions.size(); i++) {
+		%> <%= question.get(i) %><br>
+		<label><input type="checkbox" name="yes<%= i%>">Yes</label><br>
+		<label><input type="checkbox" name="no<%= i%>">No</label><br>
+		<%
+	}
+	%>
+	
 	<input type="submit" value="Fetch individuals"/>
 </form>
 
@@ -39,7 +56,7 @@
 
 <%
 
-//TODO Handle error if persons = 0 (Maybe in LoadServlet.java)
+//TODO Handle error if persons = 0 (in LoadServlet.java and here?)
 	List <Person> persons = (List <Person>) session.getAttribute("persons");
 	Object checkFiltered = request.getAttribute("personsFiltered");
 	int totalSize = persons.size();
