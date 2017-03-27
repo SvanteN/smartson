@@ -40,7 +40,7 @@ public class Person {
 
   public int birthyear;
 
-  public List<Long> campaigns;
+  @Index public List<Long> campaigns;
 
 
 
