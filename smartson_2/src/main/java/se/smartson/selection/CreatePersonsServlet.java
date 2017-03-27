@@ -72,7 +72,7 @@ public class CreatePersonsServlet extends HttpServlet {
             boolean gender = true;
             
             String g = list.remove(0);
-            if (g  == "Kvinna") { gender = false;}
+            if (g.equals("Kvinna")) { gender = false;}
          
             
             String email = list.remove(0);
@@ -85,9 +85,9 @@ public class CreatePersonsServlet extends HttpServlet {
             boolean answer2 = true;
             boolean answer3 = true;
             
-            if (a1 == "Nej"){answer1 = false;}
-            if (a2 == "Nej"){answer2 = false;}
-            if (a3 == "Nej"){answer3 = false;}
+            if (a1.equals("Nej")){answer1 = false;}
+            if (a2.equals("Nej")){answer2 = false;}
+            if (a3.equals("Nej")){answer3 = false;}
           
             
             System.out.println( firstname + secondname + birthyear + postnumber + adress + city + gender + answer1 + answer2 + answer3);
