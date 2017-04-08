@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<settings>
+	<!-- Here you define person-attributes according to csv-input-file
+	You can also define a validationsMethod for correct input format.
+	checkAndCapitalize; strip of strange symbols and capitalize
+	checkOnlyNumbers; strip strings of anything except numbers
+	-->
+
+			<personAttribute id="firstname">
+				<formatMethod>checkAndCapitalize</formatMethod>
+				<swe>Namn</swe>
+			</personAttribute>
+			<personAttribute id="lastname">
+				<formatMethod>checkAndCapitalize</formatMethod>
+				<swe>Efternamn</swe>
+			</personAttribute>
+			<personAttribute id="zip">
+				<formatMethod>checkOnlyNumbers</formatMethod>
+				<swe>Postnummer</swe>
+			</personAttribute>
+			<personAttribute id="birthyear">
+				<formatMethod>checkOnlyNumbers</formatMethod>
+				<swe>Födelseår</swe>
+			</personAttribute>
+			<personAttribute id="adress">
+				<swe>Gatuadress</swe>
+				<formatMethod></formatMethod>
+			</personAttribute>
+			<personAttribute id="city">
+				<swe>Ort</swe>
+				<formatMethod></formatMethod>
+			</personAttribute>
+			<personAttribute id="email">
+				<swe>E-post</swe>
+				<formatMethod></formatMethod>
+			</personAttribute>
+			<personAttribute id="gender">
+				<swe>Jag är:</swe>
+				<formatMethod></formatMethod>
+			</personAttribute>
+
+		<applicationAttribute id="firstname">
+			<formatMethod>checkAndCapitalize</formatMethod>
+			<swe>Namn</swe>
+		</applicationAttribute>
+		<applicationAttribute id="lastname">
+			<formatMethod>checkAndCapitalize</formatMethod>
+			<swe>Efternamn</swe>
+		</applicationAttribute>
+
+		<applicationAttribute id="gender">
+			<swe>Jag är:</swe>
+			<formatMethod></formatMethod>
+		</applicationAttribute>
+
+		<applicationAttribute id="birthyear">
+			<formatMethod>checkOnlyNumbers</formatMethod>
+			<swe>Födelseår</swe>
+		</applicationAttribute>
+
+		<applicationAttribute id="city">
+			<swe>Ort</swe>
+			<formatMethod></formatMethod>
+		</applicationAttribute>
+
+
+		<applicationAttribute id="adress">
+			<swe>Gatuadress</swe>
+			<formatMethod></formatMethod>
+		</applicationAttribute>
+
+		<applicationAttribute id="zip">
+			<formatMethod>checkOnlyNumbers</formatMethod>
+			<swe>Postnummer</swe>
+		</applicationAttribute>
+
+
+		<applicationAttribute id="entryId">
+			<swe>Entry Id</swe>
+			<formatMethod></formatMethod>
+		</applicationAttribute>
+		<applicationAttribute id="date">
+			<swe>Date Created</swe>
+			<formatMethod></formatMethod>
+		</applicationAttribute>
+		<applicationAttribute id="productName">
+			<swe>Produktnamn</swe>
+			<formatMethod></formatMethod>
+		</applicationAttribute>
+		<applicationAttribute id="ip">
+			<swe>IP Address</swe>
+			<formatMethod></formatMethod>
+		</applicationAttribute>
+		<applicationAttribute id="recommendFriend">
+			<swe>Tipsa en kompis om att bli testpilot via e-post.</swe>
+			<formatMethod></formatMethod>
+		</applicationAttribute>
+		<applicationAttribute id="couponFromStore">
+			<swe>Har du möjlighet att delta i testet genom att skriva ut en värdekupong och hämta ut produkten i butik?</swe>
+			<formatMethod></formatMethod>
+		</applicationAttribute>
+		<applicationAttribute id="email">
+			<swe>E-post</swe>
+			<formatMethod></formatMethod>
+		</applicationAttribute>
+
+
+
+	<campaignAttribute id="url">
+		<swe>Canvas URL</swe>
+		<formatMethod></formatMethod>
+	</campaignAttribute>
+
+
+	<campaignAttribute id="productName">
+		<swe>Produktnamn</swe>
+		<formatMethod></formatMethod>
+	</campaignAttribute>
+
+
+
+	<ignoreHeader>Last Updated</ignoreHeader>
+	<ignoreHeader>Updated By</ignoreHeader>
+	<ignoreHeader>Last Page Accessed</ignoreHeader>
+	<ignoreHeader>Completion Status</ignoreHeader>
+	<ignoreHeader>Created By</ignoreHeader>
+</settings>
