@@ -9,8 +9,8 @@
     <servlet-class>se.smartson.selection.HelloAppEngine</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>CreatePersons</servlet-name>
-  	<servlet-class>se.smartson.selection.CreatePersonsServlet</servlet-class>
+  	<servlet-name>CsvParser</servlet-name>
+  	<servlet-class>se.smartson.selection.CsvParserServlet</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>Load</servlet-name>
@@ -29,7 +29,7 @@
     <url-pattern>/hello</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>CreatePersons</servlet-name>
+  	<servlet-name>CsvParser</servlet-name>
   	<url-pattern>/create</url-pattern>
   </servlet-mapping>
   <servlet-mapping>

@@ -64,7 +64,7 @@ public class CsvParserServlet extends HttpServlet  {
 	    BufferedReader br = new BufferedReader(
 	            new InputStreamReader(new FileInputStream("SamsungBig.csv"), "UTF-8"));
 
-	    // Check special cases when header is null
+	    // First row of csv-file, ergo the "headerRow"
 	    String[] headerRow = br.readLine().split(";");
 
 		int count = 0;
@@ -80,9 +80,6 @@ public class CsvParserServlet extends HttpServlet  {
 	    	//Creating a new person and a new Application for every row
 	    	Person p = new Person();
 	    	Application a = new Application();
-
-	    	// Hashmap for all the questions in application
-			// HashMap<String, List<String>> qHm = new HashMap<String, List<String>>();
 
 			// for every row, we go through every column of the csv, special split function to split on ";" but not the ";" incapsled by quotation marks.
 			String[] rowValues = row.split(";(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
@@ -101,7 +98,7 @@ public class CsvParserServlet extends HttpServlet  {
 				if (settings.iA.contains(headerRow[i])){
 					continue;
 				}
-				//If header in personAttribute, or applicationAttribute,
+				//If header in personAttribute, or applicationAttribute or campaignAttribute,
 				else if (settings.pA.containsKey(headerRow[i]) || settings.aA.containsKey(headerRow[i]) || settings.cA.containsKey(headerRow[i]) ){
 
 	    			// If header in personAttribute, we setinstance to the personobject
@@ -121,16 +118,18 @@ public class CsvParserServlet extends HttpServlet  {
 
 				//If the queston (header) isn't in the question hashmap, we will generate a new object in hashmap with question (header)
 				// as key and then a list with answer as value
-
-
 				else if (a.qHm.get(headerRow[i]) == null) {
 						a.setNewQuestion(headerRow[i],rowValues[i]);
+						
+						//We will also append the answer and question to campaignobject
 						c.checkQuestionInCampaign(headerRow[i],rowValues[i]);
 						}
 				else{
 					// If question (header) is already in questionHashmap we will get the list with answers,
 					// check if answer is already list; otherwise append the answer to the answerlist
 					a.addAnswerToQuestion(headerRow[i],rowValues[i]);
+					
+					//We will also append the answer and question to campaignobject
 					c.checkQuestionInCampaign(headerRow[i],rowValues[i]);
 			}
 
@@ -143,9 +142,10 @@ public class CsvParserServlet extends HttpServlet  {
 
 	    }
 
-	    // If there is multiple answers, ergo >2 we don't want "" (Empty string) in our alternatives; therefore we remove ut.
+	    // If there is multiple answers, ergo >2 we don't want "" (Empty string) in our alternatives; therefore we remove out the answer "".
 		c.multipleAnswerSpecialCheck();
 	    c.participants = count;
+	    
 	    DatastoreUpdate.addCampaign(c);
 
 

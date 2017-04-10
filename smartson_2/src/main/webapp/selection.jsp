@@ -16,7 +16,7 @@
 
 <%
 	//TODO Handle error if no campaign is assigned 
-	Campaign campaign = (Campaign) session.getAttribute("campaign");
+	// Campaign campaign = (Campaign) session.getAttribute("campaign");
 
 	%>
 	
