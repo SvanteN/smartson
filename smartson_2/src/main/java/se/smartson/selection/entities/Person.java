@@ -1,21 +1,26 @@
+
+
 package se.smartson.selection;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 import com.googlecode.objectify.annotation.Parent;
+import com.googlecode.objectify.annotation.Cache;
 import com.googlecode.objectify.Key;
 
 import java.io.Serializable;
 import java.lang.String;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
+
+
 
 /**
  * The @Entity tells Objectify about our entity.  We also register it in OfyHelper.java -- very
@@ -29,45 +34,43 @@ import java.util.ArrayList;
  * NOTE - all the properties are PUBLIC to keep this simple; otherwise,
  * Jackson wants us to write a BeanSerializer for cloud endpoints.
  **/
+
 @Entity
-public class Application implements Serializable{
-	
+@Cache
+public class Person implements Serializable{
+
 	private static final long serialVersionUID = 1L;
+
+
+	public String firstname;
+	public String lastname ;
+	public int zip;
+	public String city;
+
+	public String adress;
+	public int birthyear;
+	@Id public String email;
+	public String gender;
+	public List<Long> campaigns;
 	
-	String entryId;
-	String date;
-	String productName;
-	String ip;
-	String recommendFriend;
-	String couponFromStore;
-	String email;
-
-	String firstname;
-	String lastname ;
-	int zip;
-	String city;
-	String gender;
-	String adress;
-	int birthyear;
-	HashMap<String, List<String>> qHm = new HashMap<String, List<String>>();
-
-	public Application() {
-		
-		
-	}
-	public Application(String e,String d,String p, String i, String r, String c, String em){
+	
+  	// P
+	public Person() {}
+	public Person(String n, String s, int p, int y, String e, String ci, String a, String g, List<Long> c ){
 	    this();
-	    entryId = e;
-	    date = d;
-	    productName = d;
-	    ip = i;
-	    recommendFriend = r;
-	    couponFromStore = c;
-	    email = em;
-
+	    firstname = n;
+	    lastname = s;
+	    zip= p;
+	    city = ci;
+	    birthyear = y;
+	    campaigns = c;
+	    email = e;
+	    gender = g;
+	   
+	    adress = a;
 	    
 	}
-
+	
 	public void setInstance(String fieldName, String value, String checkMethodName) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, SecurityException, InvocationTargetException {
 
 		//Get instance field
@@ -78,9 +81,9 @@ public class Application implements Serializable{
 
 		//If checkMethodName isn't null, we must perform the formatcheck of input
 		if (checkMethodName != ""){
-
+			
 			//System.out.println(checkMethodName);
-
+			
 			Method method = InputValidation.class.getDeclaredMethod(checkMethodName,String.class);
 			instancevalue = method.invoke(null, value);
 		}
@@ -88,19 +91,5 @@ public class Application implements Serializable{
 		field.set(this,instancevalue);
 	}
 
-	public void setNewQuestion(String q, String a){
-		List answers = new ArrayList<String>();
-		answers.add(a);
-		qHm.put(q,answers);
-	}
 
-	public void addAnswerToQuestion(String q, String a){
-		List answerList = qHm.get(q);
-		if (!answerList.contains(a)){
-			answerList.add(a);}
-
-	}
-
-
-	}
-
+}

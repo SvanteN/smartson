@@ -19,6 +19,10 @@
 </form>
 <button type="button">Edit</button>
 
+<form action="/devtest" method="post">
+	<div><input type="submit" value="Create"/></div>
+</form>
+
 
 </body>
 </html>

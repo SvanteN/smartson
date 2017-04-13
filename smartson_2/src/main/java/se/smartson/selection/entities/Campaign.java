@@ -5,6 +5,7 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 import com.googlecode.objectify.annotation.Parent;
+import com.googlecode.objectify.annotation.Cache;
 import com.googlecode.objectify.Key;
 
 import java.io.Serializable;
@@ -34,6 +35,7 @@ import java.util.HashMap;
  * Jackson wants us to write a BeanSerializer for cloud endpoints.
  **/
 @Entity
+@Cache
 public class Campaign implements Serializable{
 
 	private static final long serialVersionUID = 1L;

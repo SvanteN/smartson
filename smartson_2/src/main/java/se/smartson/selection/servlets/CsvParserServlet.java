@@ -62,7 +62,7 @@ public class CsvParserServlet extends HttpServlet  {
 
 		// Ought to be removed when using csv as input
 	    BufferedReader br = new BufferedReader(
-	            new InputStreamReader(new FileInputStream("SamsungBig.csv"), "UTF-8"));
+	            new InputStreamReader(new FileInputStream("TestforSmartson.csv"), "UTF-8"));
 
 	    // First row of csv-file, ergo the "headerRow"
 	    String[] headerRow = br.readLine().split(";");
@@ -79,7 +79,7 @@ public class CsvParserServlet extends HttpServlet  {
 
 	    	//Creating a new person and a new Application for every row
 	    	Person p = new Person();
-	    	Application a = new Application();
+	    	Application a = new Application(); //TODO: Force to send campaign Key
 
 			// for every row, we go through every column of the csv, special split function to split on ";" but not the ";" incapsled by quotation marks.
 			String[] rowValues = row.split(";(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
